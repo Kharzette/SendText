@@ -48,18 +48,20 @@ class Proggy
 	{
 		if(args.Length < 2 || args.Length > 2)
 		{
-			Console.WriteLine("Usage:  SendPass WindowID (AKA 0x0something from wmctrl -l) Password in single quotes");
+			Console.WriteLine("Usage:  SendPass WindowID (AKA 0x0something from wmctrl -l) text in single quotes");
 			return;
 		}
 
 		string	windowID	=args[0];
-		string	passWord	=StripSingleQuotes(args[1]);
+		string	text		=StripSingleQuotes(args[1]);
 
 		CallXDO("windowactivate " + windowID);
 
-		//Console.WriteLine(passWord);
+		Thread.Sleep(100);
 
-		CallXDO("type --window " + windowID + " " + passWord);
+		Console.WriteLine("Sending:  " + text);
+
+		CallXDO("type --window " + windowID + " " + text);
 
 		return;
 	}
