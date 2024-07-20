@@ -61,7 +61,7 @@ class Proggy
 
 		Console.WriteLine("Sending:  " + text);
 
-		CallXDO("type --window " + windowID + " " + text);
+		CallXDO("type --window " + windowID + " \"" + text + "\"");
 
 		return;
 	}
